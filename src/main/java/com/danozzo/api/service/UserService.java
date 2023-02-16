@@ -29,7 +29,7 @@ public class UserService {
     public CompletableFuture<List<User>> saveUsers(MultipartFile file) throws Exception {
         long start = System.currentTimeMillis();
         List<User> users = parseCSVFile(file);
-        logger.info("saving list of users of size", users.size(), "" + Thread.currentThread().getName());
+        logger.info("saving list of users of size {}", users.size(), "" + Thread.currentThread().getName());
         users = userRepository.saveAll(users);
         long end = System.currentTimeMillis();
         logger.info("Total time {}", (end - start));
